@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add friends</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a th:href="@{/addfriends}" class="nav-link"><p>Add a friend</p></a>
+            </li>
+            <li class="nav-item">
+                <a th:href="@{/listfriends}" class="nav-link"><p>See friends</p></a>
+            </li>
+            <li class="nav-item">
+                <a th:href="@{/logout}" class="nav-link"><p>Log out</p></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <form th:action="@{/friends/add}" th:object="${aFriend}" method="post" enctype="multipart/form-data">
+        <div class="form-group col-md-6">
+            <label for="firstName">Friend's first Name</label>
+            <input type="text" class="form-control" th:field="*{firstName}">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="lastName">Friend's first Name</label>
+            <input type="text" class="form-control" th:field="*{lastName}">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="nickname">Friend's first Name</label>
+            <input type="text" class="form-control" th:field="*{nickname}">
+        </div>
+        <div class="form-group col-md-6">
+            <label class="btn btn-default btn-file">Picture to Upload<input type="file" name="file" class="form-control"></label>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="myRank">Rank on a scale of 1 to 10</label>
+            <input type="number" class="form-control" th:field="*{myRank}">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+<div th:replace="base :: js_footer"></div>
+</body>
+</html>
